@@ -19,12 +19,12 @@ jobs:
       - name: Authenticate Packaging Org
         run: |
           echo "${{ secrets.PACKAGING_ORG_SECRET }}" > authfile.txt
-          sf org login sfdx-url --sfdx-url-file authfile.txt --alias packaging_Org
+          sf org login sfdx-url --sfdx-url-file authfile.txt --alias production_org
 
       - name: Deploy to Packaging Org
         run: |
           sf project deploy start \
-            --target-org packaging_Org \
+            --target-org production_org \
             --source-dir force-app \
             --test-level RunLocalTests \
             --wait 60
